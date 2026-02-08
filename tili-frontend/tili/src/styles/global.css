@@ -1,0 +1,49 @@
+@import './variables.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-body);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: var(--font-size-base);
+}

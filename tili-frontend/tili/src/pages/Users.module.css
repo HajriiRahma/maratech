@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.email {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Role Badges */
+.admin {
+    background-color: #e6f0ff;
+    color: var(--primary);
+}
+
+.manager {
+    background-color: #e6f9ed;
+    color: var(--success);
+}
+
+.consultant {
+    background-color: #fff3cd;
+    color: var(--warning);
+}
+
+/* Status */
+.active {
+    color: var(--success);
+    font-weight: 500;
+}
+
+.inactive {
+    color: var(--text-secondary);
+}
+
+.actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.actionBtn {
+    padding: 4px;
+    color: var(--text-secondary);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.actionBtn:hover {
+    background-color: var(--light);
+    color: var(--primary);
+}
+
+.delete:hover {
+    background-color: #ffeaea;
+    color: var(--danger);
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.input,
+.select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}

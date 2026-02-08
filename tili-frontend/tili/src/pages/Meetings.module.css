@@ -1,0 +1,190 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.meetingCard {
+    transition: transform 0.2s;
+}
+
+.meetingCard:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Card overrides to make it horizontal flex if needed, 
+   but Card component structure is title/content. 
+   Here we used children inside Card to structure it. 
+   We'll use specific classes to layout children.
+*/
+
+/* We can't easily override internal Card structure unless we passed className to Card */
+/* Ideally we use a row layout. Let's inspect generated jsx structure */
+/* The Card renders children in a .content div. so these styles apply there. */
+
+/* To layout the card content nicely: */
+
+/* Instead, we can target the children container inside Card. But Card.module.css defines .content. */
+/* We should just style the elements we put inside Card */
+
+/* Actually, Card `className` prop applies to the OUTER container. */
+/* So .meetingCard applies to the wrapper. */
+/* We can use :global selector or just structure inside. */
+/* Let's assume Card simply renders what we passed. */
+
+.meetingCard :global(div[class*="content"]) {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    /* This is brittle. Better to just use the structure inside Card children. */
+}
+
+/* Wait, Card.jsx renders:
+   <div className={styles.card}>
+     {header...}
+     <div className={styles.content}>{children}</div>
+   </div>
+   
+   If we didn't pass title/actions, header is not rendered.
+   So {children} is inside .content.
+   
+   So to make the card content flex row:
+*/
+.meetingCard>div:last-child {
+    /* Targets .content */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.dateBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    min-width: 60px;
+}
+
+.month {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+}
+
+.day {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.meetingInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meetingTitle {
+    font-size: 16px;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+.meta {
+    display: flex;
+    gap: var(--spacing-md);
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.participants {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Modal Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.loading,
+.error,
+.emptyState {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.error {
+    color: #dc3545;
+}
+
+.projectLink {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--primary);
+    background-color: var(--light);
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: fit-content;
+    margin: 4px 0;
+}

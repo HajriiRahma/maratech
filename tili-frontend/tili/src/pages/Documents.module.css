@@ -1,0 +1,105 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.filters {
+    display: flex;
+    gap: var(--spacing-md);
+    flex: 1;
+}
+
+.searchWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.searchInput {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.select {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: white;
+}
+
+.docName {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.actionBtn {
+    padding: 4px;
+    color: var(--text-secondary);
+    border-radius: 4px;
+}
+
+.actionBtn:hover {
+    background-color: var(--light);
+    color: var(--primary);
+}
+
+/* Upload Modal Form */
+.uploadForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.dropzone {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: var(--text-secondary);
+    background-color: var(--light);
+    cursor: pointer;
+}
+
+.dropzone:hover {
+    border-color: var(--primary);
+    background-color: #e6f0ff;
+}
