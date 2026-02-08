@@ -1,0 +1,72 @@
+
+> Caused by: java.lang
+.ClassNotFoundExceptio
+n: DocumentType
+  	at java.base/jdk.in
+ternal.loader.BuiltinC
+lassLoader.loadClass(B
+uiltinClassLoader.java
+:641) ~[na:na]
+  	at java.base/jdk.in
+ternal.loader.ClassLoa
+ders$AppClassLoader.lo
+adClass(ClassLoaders.j
+ava:188) ~[na:na]
+  	at java.base/java.l
+ang.ClassLoader.loadCl
+ass(ClassLoader.java:5
+25) ~[na:na]
+  	... 28 common 
+frames omitted
+  
+  [INFO] -------------
+----------------------
+----------------------
+---------------
+  [INFO] BUILD FAILURE
+  [INFO] -------------
+----------------------
+----------------------
+---------------
+  [INFO] Total time:  
+4.034 s
+  [INFO] Finished at: 
+2026-02-07T23:14:52+01
+:00
+  [INFO] -------------
+----------------------
+----------------------
+---------------
+  [ERROR] Failed to 
+execute goal org.sprin
+gframework.boot:spring
+-boot-maven-plugin:3.2
+.0:run (default-cli) 
+on project 
+tili-backend: Process 
+terminated with exit 
+code: 1 -> [Help 1]
+  [ERROR] 
+  [ERROR] To see the 
+full stack trace of 
+the errors, re-run 
+Maven with the -e 
+switch.
+  [ERROR] Re-run 
+Maven using the -X 
+switch to enable full 
+debug logging.
+  [ERROR] 
+  [ERROR] For more 
+information about the 
+errors and possible 
+solutions, please 
+read the following 
+articles:
+  [ERROR] [Help 1] htt
+p://cwiki.apache.org/c
+onfluence/display/MAVE
+N/MojoExecutionExcepti
+on
+
+

@@ -1,0 +1,131 @@
+
+> maven_runtime_fail_5
+.txt:58:2026-02-07T23:
+19:05.610+01:00  WARN 
+29408 --- 
+[tili-backend] [      
+     main] ConfigServl
+etWebServerApplication
+Context : Exception 
+encountered during 
+context 
+initialization - 
+cancelling refresh 
+attempt: org.springfra
+mework.context.Applica
+tionContextException: 
+Failed to start bean 
+'webServerStartStop'
+  maven_runtime_fail_5
+.txt:59:2026-02-07T23:
+19:05.615+01:00  INFO 
+29408 --- 
+[tili-backend] [      
+     main] j.LocalCont
+ainerEntityManagerFact
+oryBean : Closing JPA 
+EntityManagerFactory 
+for persistence unit 
+'default'
+  maven_runtime_fail_5
+.txt:60:2026-02-07T23:
+19:05.615+01:00  INFO 
+29408 --- 
+[tili-backend] [      
+     main] com.zaxxer.
+hikari.HikariDataSourc
+e       : 
+HikariPool-1 - 
+Shutdown initiated...
+  maven_runtime_fail_5
+.txt:61:2026-02-07T23:
+19:05.626+01:00  INFO 
+29408 --- 
+[tili-backend] [      
+     main] com.zaxxer.
+hikari.HikariDataSourc
+e       : 
+HikariPool-1 - 
+Shutdown completed.
+  maven_runtime_fail_5
+.txt:62:2026-02-07T23:
+19:05.640+01:00  INFO 
+29408 --- 
+[tili-backend] [      
+     main] .s.b.a.l.Co
+nditionEvaluationRepor
+tLogger : 
+  maven_runtime_fail_5
+.txt:63:
+> maven_runtime_fail_5
+.txt:64:Error 
+starting 
+ApplicationContext. 
+To display the 
+condition evaluation 
+report re-run your 
+application with 
+'debug' enabled.
+> maven_runtime_fail_5
+.txt:65:2026-02-07T23:
+19:05.660+01:00 ERROR 
+29408 --- 
+[tili-backend] [      
+     main] o.s.b.d.Log
+gingFailureAnalysisRep
+orter   : 
+  maven_runtime_fail_5
+.txt:66:
+  maven_runtime_fail_5
+.txt:67:**************
+*************
+  maven_runtime_fail_5
+.txt:68:APPLICATION 
+FAILED TO START
+  maven_runtime_fail_5
+.txt:69:**************
+*************
+  maven_runtime_fail_5
+.txt:70:
+> maven_runtime_fail_5
+.txt:85:[ERROR] 
+Failed to execute 
+goal org.springframewo
+rk.boot:spring-boot-ma
+ven-plugin:3.2.0:run 
+(default-cli) on 
+project tili-backend: 
+Process terminated 
+with exit code: 1 -> 
+[Help 1]
+> maven_runtime_fail_5
+.txt:86:[ERROR] 
+> maven_runtime_fail_5
+.txt:87:[ERROR] To 
+see the full stack 
+trace of the errors, 
+re-run Maven with the 
+-e switch.
+> maven_runtime_fail_5
+.txt:88:[ERROR] 
+Re-run Maven using 
+the -X switch to 
+enable full debug 
+logging.
+> maven_runtime_fail_5
+.txt:89:[ERROR] 
+> maven_runtime_fail_5
+.txt:90:[ERROR] For 
+more information 
+about the errors and 
+possible solutions, 
+please read the 
+following articles:
+> maven_runtime_fail_5
+.txt:91:[ERROR] [Help 
+1] http://cwiki.apache
+.org/confluence/displa
+y/MAVEN/MojoExecutionE
+xception
+
+

@@ -1,0 +1,31 @@
+
+> Caused by: java.lang.Clas
+sNotFoundException: 
+DocumentType
+  	at java.base/jdk.interna
+l.loader.BuiltinClassLoader
+.loadClass(BuiltinClassLoad
+er.java:641) ~[na:na]
+  	at java.base/jdk.interna
+l.loader.ClassLoaders$AppCl
+assLoader.loadClass(ClassLo
+aders.java:188) ~[na:na]
+  	at java.base/java.lang.C
+lassLoader.loadClass(ClassL
+oader.java:525) ~[na:na]
+  	... 28 common frames 
+omitted
+  
+  [INFO] ------------------
+---------------------------
+---------------------------
+  [INFO] BUILD FAILURE
+  [INFO] ------------------
+---------------------------
+---------------------------
+  [INFO] Total time:  
+4.101 s
+  [INFO] Finished at: 
+2026-02-07T23:16:58+01:00
+
+

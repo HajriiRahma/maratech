@@ -1,0 +1,54 @@
+
+  [INFO] -------------
+----------------------
+----------------------
+----
+  [ERROR] COMPILATION 
+ERROR : 
+  [INFO] -------------
+----------------------
+----------------------
+----
+> [ERROR] /C:/maratech
+/tili-backend/src/main
+/java/com/tili/backend
+/service/DashboardServ
+ice.java:[19,13] 
+cannot find symbol
+    symbol:   class 
+ProjectRepository
+    location: class co
+m.tili.backend.service
+.DashboardService
+  [INFO] 1 error
+  [INFO] Finished at: 
+2026-02-07T23:06:52+01
+:00
+  [INFO] -------------
+----------------------
+----------------------
+---------------
+  [ERROR] Failed to 
+execute goal org.apach
+e.maven.plugins:maven-
+compiler-plugin:3.11.0
+:compile 
+(default-compile) on 
+project tili-backend: 
+Compilation failure
+> [ERROR] /C:/maratech
+/tili-backend/src/main
+/java/com/tili/backend
+/service/DashboardServ
+ice.java:[19,13] 
+cannot find symbol
+  [ERROR]   symbol:   
+class 
+ProjectRepository
+  [ERROR]   location: 
+class com.tili.backend
+.service.DashboardServ
+ice
+  [ERROR] 
+
+
