@@ -6,6 +6,7 @@ import Modal from '../components/common/Modal';
 import { FileText, Download, Eye, Plus, Search } from 'lucide-react';
 import { storage } from '../utils/storage';
 import { authService } from '../utils/auth';
+import { useAccessibility } from '../context/AccessibilityContext';
 import styles from './Documents.module.css';
 
 const typeMapping = {
@@ -17,6 +18,7 @@ const typeMapping = {
 };
 
 const Documents = () => {
+    const { announceContext, speak, preferences } = useAccessibility();
     const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
     const [filter, setFilter] = useState('all');
     const [search, setSearch] = useState('');
@@ -53,6 +55,31 @@ const Documents = () => {
 
         fetchData();
     }, []);
+
+    // Continuous context awareness - announce page context when data loads
+    useEffect(() => {
+        if (!isLoading && !error && (preferences.spatialGuidance || preferences.descriptiveAudio)) {
+            setTimeout(() => {
+                announceContext('Documents', {
+                    itemCount: documents.length,
+                    itemType: 'documents',
+                    availableActions: [
+                        'upload new document',
+                        'search documents',
+                        'filter by type',
+                        'view document',
+                        'download document',
+                        'navigate to Dashboard',
+                        'navigate to Projects',
+                        'navigate to Meetings'
+                    ],
+                    navigationHint: documents.length > 0
+                        ? `There are ${documents.length} documents. Say "upload document" to add a new one, or use the search and filter options.`
+                        : 'No documents yet. Say "upload document" to add your first document.'
+                });
+            }, 1000);
+        }
+    }, [isLoading, error, documents.length]);
 
     // Filter Logic
     const filteredDocs = documents.filter(doc => {

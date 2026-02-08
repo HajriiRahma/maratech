@@ -30,6 +30,25 @@
     border-bottom: 1px solid var(--border-color);
 }
 
+.avatarContainer {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.avatarContainer:hover {
+    transform: scale(1.05);
+}
+
+.avatarContainer:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 .avatar {
     width: 64px;
     height: 64px;
@@ -43,6 +62,36 @@
     font-weight: 600;
 }
 
+.avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.avatarOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: white;
+    font-size: 10px;
+    gap: 4px;
+}
+
+.avatarContainer:hover .avatarOverlay,
+.avatarContainer:focus .avatarOverlay {
+    opacity: 1;
+}
+
 .profileInfo h3 {
     margin: 0;
     font-size: 18px;
@@ -52,6 +101,17 @@
     margin: 0;
     color: var(--text-secondary);
     font-size: 14px;
+}
+
+.roleTag {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 4px;
 }
 
 /* Form Elements */
@@ -152,6 +212,81 @@ input:checked+.slider {
 
 input:checked+.slider:before {
     transform: translateX(24px);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.tab:hover {
+    color: var(--primary);
+    background-color: var(--light);
+}
+
+.activeTab {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.tabContent {
+    min-height: 200px;
+}
+
+/* Loading and Error States */
+.loading,
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    text-align: center;
+    min-height: 300px;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error p {
+    color: var(--danger);
+    margin-bottom: var(--spacing-md);
+}
+
+.emptyState {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: var(--spacing-xl);
+    font-style: italic;
 }
 
 .saveBtn {

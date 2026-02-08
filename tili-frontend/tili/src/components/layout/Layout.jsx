@@ -28,7 +28,12 @@ const Layout = ({ children, activePage, onNavigate, user, onLogout }) => {
                     title={titles[activePage] || 'TILI'}
                     user={user}
                 />
-                <main className={styles.content}>
+                <main
+                    id="main-content"
+                    className={styles.content}
+                    role="main"
+                    aria-label={`${titles[activePage] || 'TILI'} content`}
+                >
                     {children}
                 </main>
             </div>

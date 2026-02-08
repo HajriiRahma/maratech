@@ -4,6 +4,7 @@ import Button from '../components/common/Button';
 import Modal from '../components/common/Modal';
 import { Calendar, Plus, Clock, MapPin, Users, FileText, Video } from 'lucide-react';
 import { storage } from '../utils/storage';
+import { useAccessibility } from '../context/AccessibilityContext';
 import styles from './Meetings.module.css';
 
 const MeetingCard = ({ meeting }) => (
@@ -38,6 +39,7 @@ const MeetingCard = ({ meeting }) => (
 );
 
 const Meetings = () => {
+    const { announceContext, speak, preferences } = useAccessibility();
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [meetings, setMeetings] = useState([]);
     const [projects, setProjects] = useState([]);
@@ -73,6 +75,30 @@ const Meetings = () => {
 
         fetchData();
     }, []);
+
+    // Continuous context awareness - announce page context when data loads
+    useEffect(() => {
+        if (!isLoading && !error && (preferences.spatialGuidance || preferences.descriptiveAudio)) {
+            setTimeout(() => {
+                announceContext('Meetings', {
+                    itemCount: meetings.length,
+                    itemType: 'meetings',
+                    availableActions: [
+                        'schedule new meeting',
+                        'view meeting details',
+                        'join online meeting',
+                        'view meeting notes',
+                        'navigate to Dashboard',
+                        'navigate to Projects',
+                        'navigate to Documents'
+                    ],
+                    navigationHint: meetings.length > 0
+                        ? `There are ${meetings.length} meetings. Say "schedule meeting" to add a new one, or "join meeting" to join an online meeting.`
+                        : 'No meetings scheduled yet. Say "schedule meeting" to add your first meeting.'
+                });
+            }, 1000);
+        }
+    }, [isLoading, error, meetings.length]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

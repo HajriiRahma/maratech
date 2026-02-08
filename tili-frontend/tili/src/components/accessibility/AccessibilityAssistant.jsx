@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
-import { Volume2, ZoomIn, ZoomOut, BookOpen, HelpCircle, X, Maximize2 } from 'lucide-react';
+import { Volume2, ZoomIn, ZoomOut, BookOpen, HelpCircle, X, Maximize2, User } from 'lucide-react';
 import { useAccessibility } from '../../context/AccessibilityContext';
+import AccessibilityProfileManager from './AccessibilityProfileManager';
 import styles from './AccessibilityAssistant.module.css';
 
 const AccessibilityAssistant = () => {
     const { preferences, updatePreference, speak, isAssistantOpen, toggleAssistant } = useAccessibility();
     const [isExpanded, setIsExpanded] = useState(false);
+    const [showProfileManager, setShowProfileManager] = useState(false);
 
     const actions = [
+        {
+            id: 'manage-profile',
+            icon: User,
+            label: 'Manage accessibility profile',
+            action: () => {
+                setShowProfileManager(true);
+                speak('Opening accessibility profile manager');
+            }
+        },
         {
             id: 'read-page',
             icon: Volume2,
@@ -88,70 +99,77 @@ const AccessibilityAssistant = () => {
     }
 
     return (
-        <div className={styles.assistant} role="complementary" aria-label="Accessibility assistant">
-            <div className={styles.header}>
-                <h3 className={styles.title}>Accessibility Assistant</h3>
-                <button
-                    className={styles.closeButton}
-                    onClick={toggleAssistant}
-                    aria-label="Close assistant"
-                >
-                    <X size={20} />
-                </button>
-            </div>
-
-            <div className={styles.content}>
-                <p className={styles.description}>
-                    Quick actions to help you navigate and customize your experience
-                </p>
-
-                <div className={styles.actions}>
-                    {actions.map((action) => {
-                        const Icon = action.icon;
-                        return (
-                            <button
-                                key={action.id}
-                                className={styles.actionButton}
-                                onClick={action.action}
-                                onFocus={() => speak(action.label)}
-                                aria-label={action.label}
-                            >
-                                <Icon size={20} />
-                                <span>{action.label}</span>
-                            </button>
-                        );
-                    })}
+        <>
+            <div className={styles.assistant} role="complementary" aria-label="Accessibility assistant">
+                <div className={styles.header}>
+                    <h3 className={styles.title}>Accessibility Assistant</h3>
+                    <button
+                        className={styles.closeButton}
+                        onClick={toggleAssistant}
+                        aria-label="Close assistant"
+                    >
+                        <X size={20} />
+                    </button>
                 </div>
 
-                <div className={styles.settings}>
-                    <label className={styles.settingItem}>
-                        <input
-                            type="checkbox"
-                            checked={preferences.audioFeedback}
-                            onChange={(e) => {
-                                updatePreference('audioFeedback', e.target.checked);
-                                speak(e.target.checked ? 'Audio feedback enabled' : 'Audio feedback disabled');
-                            }}
-                            aria-label="Enable audio feedback"
-                        />
-                        <span>Audio feedback</span>
-                    </label>
+                <div className={styles.content}>
+                    <p className={styles.description}>
+                        Quick actions to help you navigate and customize your experience
+                    </p>
 
-                    <label className={styles.settingItem}>
-                        <input
-                            type="checkbox"
-                            checked={preferences.focusMode}
-                            onChange={(e) => {
-                                updatePreference('focusMode', e.target.checked);
-                                speak(e.target.checked ? 'Focus mode enabled' : 'Focus mode disabled');
-                            }}
-                            aria-label="Enable focus mode"
-                        />
-                        <span>Focus mode</span>
-                    </label>
+                    <div className={styles.actions}>
+                        {actions.map((action) => {
+                            const Icon = action.icon;
+                            return (
+                                <button
+                                    key={action.id}
+                                    className={styles.actionButton}
+                                    onClick={action.action}
+                                    onFocus={() => speak(action.label)}
+                                    aria-label={action.label}
+                                >
+                                    <Icon size={20} />
+                                    <span>{action.label}</span>
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    <div className={styles.settings}>
+                        <label className={styles.settingItem}>
+                            <input
+                                type="checkbox"
+                                checked={preferences.audioFeedback}
+                                onChange={(e) => {
+                                    updatePreference('audioFeedback', e.target.checked);
+                                    speak(e.target.checked ? 'Audio feedback enabled' : 'Audio feedback disabled');
+                                }}
+                                aria-label="Enable audio feedback"
+                            />
+                            <span>Audio feedback</span>
+                        </label>
+
+                        <label className={styles.settingItem}>
+                            <input
+                                type="checkbox"
+                                checked={preferences.focusMode}
+                                onChange={(e) => {
+                                    updatePreference('focusMode', e.target.checked);
+                                    speak(e.target.checked ? 'Focus mode enabled' : 'Focus mode disabled');
+                                }}
+                                aria-label="Enable focus mode"
+                            />
+                            <span>Focus mode</span>
+                        </label>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <AccessibilityProfileManager
+                isOpen={showProfileManager}
+                onClose={() => setShowProfileManager(false)}
+            />
+        </>
     );
 };
 

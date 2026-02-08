@@ -1,0 +1,195 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.modal {
+    background: white;
+    border-radius: 12px;
+    max-width: 900px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    padding: 32px 32px 24px;
+    text-align: center;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #007bff;
+    margin: 0 0 12px 0;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.content {
+    padding: 32px;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.category {
+    margin-bottom: 32px;
+}
+
+.category:last-child {
+    margin-bottom: 0;
+}
+
+.categoryTitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.needsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.needCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background: #f8f9fa;
+    border: 3px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.needCard:hover {
+    border-color: #007bff;
+    background: #e7f3ff;
+}
+
+.needCard:focus {
+    outline: 4px solid #007bff;
+    outline-offset: 2px;
+    border-color: #007bff;
+}
+
+.needCard.selected {
+    border-color: #007bff;
+    background: #e7f3ff;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+.checkbox {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #007bff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: white;
+    margin-top: 2px;
+}
+
+.needCard.selected .checkbox {
+    background: #007bff;
+}
+
+.checkmark {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.needContent {
+    flex: 1;
+}
+
+.needLabel {
+    font-size: 17px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 6px 0;
+    line-height: 1.4;
+}
+
+.needDescription {
+    font-size: 15px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footer {
+    padding: 24px 32px;
+    border-top: 2px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.skipButton,
+.continueButton {
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.skipButton {
+    background: transparent;
+    color: #666;
+    border: 2px solid #e9ecef;
+}
+
+.skipButton:hover {
+    background: #f8f9fa;
+    border-color: #666;
+}
+
+.skipButton:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+}
+
+.continueButton {
+    background: #007bff;
+    color: white;
+    flex: 1;
+}
+
+.continueButton:hover {
+    background: #0056b3;
+}
+
+.continueButton:focus {
+    outline: 3px solid #ffc107;
+    outline-offset: 2px;
+}
+

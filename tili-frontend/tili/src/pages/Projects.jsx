@@ -4,6 +4,7 @@ import Card from '../components/common/Card';
 import Button from '../components/common/Button';
 import { Briefcase, MoreHorizontal, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import { storage } from '../utils/storage';
+import { useAccessibility } from '../context/AccessibilityContext';
 import styles from './Projects.module.css';
 
 const ProjectCard = ({ project }) => {
@@ -57,6 +58,7 @@ const ProjectCard = ({ project }) => {
 };
 
 const Projects = () => {
+    const { announceContext, speak, preferences } = useAccessibility();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [projects, setProjects] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -86,6 +88,28 @@ const Projects = () => {
 
         fetchProjects();
     }, []);
+
+    // Continuous context awareness - announce page context when data loads
+    useEffect(() => {
+        if (!isLoading && !error && (preferences.spatialGuidance || preferences.descriptiveAudio)) {
+            setTimeout(() => {
+                announceContext('Projects', {
+                    itemCount: projects.length,
+                    itemType: 'projects',
+                    availableActions: [
+                        'create new project',
+                        'view project details',
+                        'navigate to Dashboard',
+                        'navigate to Documents',
+                        'navigate to Meetings'
+                    ],
+                    navigationHint: projects.length > 0
+                        ? `There are ${projects.length} projects. Say "create project" to add a new one, or navigate to other sections.`
+                        : 'No projects yet. Say "create project" to add your first project.'
+                });
+            }, 1000);
+        }
+    }, [isLoading, error, projects.length]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

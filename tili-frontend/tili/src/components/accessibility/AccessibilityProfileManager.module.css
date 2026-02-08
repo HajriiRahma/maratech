@@ -1,0 +1,263 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    padding: 20px;
+}
+
+.modal {
+    background: white;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    padding: 24px 24px 16px;
+    border-bottom: 2px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #007bff;
+    margin: 0 0 8px 0;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #666;
+    margin: 0;
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.closeButton:hover {
+    background: #f8f9fa;
+    color: #333;
+}
+
+.closeButton:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+}
+
+.summary {
+    padding: 16px 24px;
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary p {
+    margin: 0;
+    font-size: 15px;
+    color: #333;
+}
+
+.unsaved {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+.clearButton {
+    background: transparent;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.clearButton:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.clearButton:focus {
+    outline: 3px solid #dc3545;
+    outline-offset: 2px;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+.category {
+    margin-bottom: 24px;
+}
+
+.category:last-child {
+    margin-bottom: 0;
+}
+
+.categoryTitle {
+    font-size: 17px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.needsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.needItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.needItem:hover {
+    border-color: #007bff;
+    background: #e7f3ff;
+}
+
+.needItem:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+    border-color: #007bff;
+}
+
+.needItem.selected {
+    border-color: #007bff;
+    background: #e7f3ff;
+}
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: white;
+    color: #007bff;
+}
+
+.needItem.selected .checkbox {
+    background: #007bff;
+    color: white;
+}
+
+.needContent {
+    flex: 1;
+}
+
+.needLabel {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px 0;
+}
+
+.needDescription {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.footer {
+    padding: 16px 24px;
+    border-top: 2px solid #e9ecef;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.cancelButton,
+.saveButton {
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cancelButton {
+    background: transparent;
+    color: #666;
+    border: 2px solid #e9ecef;
+}
+
+.cancelButton:hover {
+    background: #f8f9fa;
+    border-color: #666;
+}
+
+.cancelButton:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+}
+
+.saveButton {
+    background: #007bff;
+    color: white;
+}
+
+.saveButton:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+.saveButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.saveButton:focus {
+    outline: 3px solid #ffc107;
+    outline-offset: 2px;
+}
+

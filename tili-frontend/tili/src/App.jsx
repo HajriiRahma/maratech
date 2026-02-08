@@ -8,12 +8,15 @@ import Projects from './pages/Projects';
 import Settings from './pages/Settings';
 import WelcomeModal from './components/accessibility/WelcomeModal';
 import AccessibilityAssistant from './components/accessibility/AccessibilityAssistant';
+import PreAuthAccessibilitySelector from './components/accessibility/PreAuthAccessibilitySelector';
+import VoiceNavigationController from './components/accessibility/VoiceNavigationController';
+import KeyboardNavigationManager from './components/accessibility/KeyboardNavigationManager';
 
 import { authService } from './utils/auth';
 import { AccessibilityProvider, useAccessibility } from './context/AccessibilityContext';
 
 function AppContent() {
-  const { preferences } = useAccessibility();
+  const { preferences, updatePreference } = useAccessibility();
   const [user, setUser] = useState(() => {
     return authService.getCurrentUser();
   });
@@ -21,6 +24,11 @@ function AppContent() {
   const [currentPage, setCurrentPage] = useState('dashboard');
   const [showWelcome, setShowWelcome] = useState(() => {
     return preferences.showWelcome && user !== null;
+  });
+
+  // Show pre-auth accessibility selector if not configured and not logged in
+  const [showPreAuthAccessibility, setShowPreAuthAccessibility] = useState(() => {
+    return !preferences.hasConfigured && !user;
   });
 
   const handleLogin = (userData) => {
@@ -36,6 +44,9 @@ function AppContent() {
     authService.logout();
     setUser(null);
     setCurrentPage('dashboard');
+    // Reset accessibility configuration on logout so selector shows again
+    updatePreference('hasConfigured', false);
+    setShowPreAuthAccessibility(true);
   };
 
   const renderPage = () => {
@@ -49,12 +60,41 @@ function AppContent() {
     }
   };
 
+  // Show pre-auth accessibility selector first
+  if (showPreAuthAccessibility) {
+    return (
+      <PreAuthAccessibilitySelector
+        onComplete={() => {
+          updatePreference('hasConfigured', true);
+          setShowPreAuthAccessibility(false);
+        }}
+      />
+    );
+  }
+
   if (!user) {
-    return <Login onLogin={handleLogin} />;
+    return (
+      <>
+        {/* Skip to main content link */}
+        <a href="#main-content" id="skip-to-main" className="skip-link">
+          Skip to main content
+        </a>
+
+        <Login onLogin={handleLogin} />
+        <AccessibilityAssistant />
+        <VoiceNavigationController onNavigate={setCurrentPage} />
+        <KeyboardNavigationManager onNavigate={setCurrentPage} />
+      </>
+    );
   }
 
   return (
     <>
+      {/* Skip to main content link */}
+      <a href="#main-content" id="skip-to-main" className="skip-link">
+        Skip to main content
+      </a>
+
       {showWelcome && <WelcomeModal onComplete={() => setShowWelcome(false)} />}
 
       <Layout
@@ -67,6 +107,8 @@ function AppContent() {
       </Layout>
 
       <AccessibilityAssistant />
+      <VoiceNavigationController onNavigate={setCurrentPage} />
+      <KeyboardNavigationManager onNavigate={setCurrentPage} />
     </>
   );
 }
