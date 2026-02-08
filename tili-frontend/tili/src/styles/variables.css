@@ -9,10 +9,10 @@
   --info: #17a2b8;
   --light: #f8f9fa;
   --dark: #343a40;
-  
+
   --bg-body: #f4f6f8;
   --bg-surface: #ffffff;
-  
+
   --text-primary: #333333;
   --text-secondary: #666666;
   --text-light: #ffffff;
@@ -30,13 +30,75 @@
   --font-size-sm: 14px;
   --font-size-lg: 18px;
   --font-size-xl: 24px;
-  
+
   /* Borders */
   --border-radius: 8px;
   --border-color: #e9ecef;
-  
+
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Accessibility */
+  --transition-speed: 0.2s;
+}
+
+/* Font Size Variations */
+[data-font-size="small"] {
+  --font-size-base: 14px;
+  --font-size-sm: 12px;
+  --font-size-lg: 16px;
+  --font-size-xl: 20px;
+}
+
+[data-font-size="medium"] {
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+}
+
+[data-font-size="large"] {
+  --font-size-base: 18px;
+  --font-size-sm: 16px;
+  --font-size-lg: 22px;
+  --font-size-xl: 28px;
+}
+
+[data-font-size="xlarge"] {
+  --font-size-base: 22px;
+  --font-size-sm: 18px;
+  --font-size-lg: 26px;
+  --font-size-xl: 34px;
+}
+
+/* High Contrast Mode */
+[data-contrast="high"] {
+  --bg-body: #000000;
+  --bg-surface: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --border-color: #444444;
+  --primary: #4da6ff;
+  --primary-hover: #66b3ff;
+  --success: #4dff4d;
+  --danger: #ff4d4d;
+  --warning: #ffcc00;
+}
+
+/* Focus Mode - Simplified UI */
+[data-focus-mode="true"] {
+  --shadow-sm: none;
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

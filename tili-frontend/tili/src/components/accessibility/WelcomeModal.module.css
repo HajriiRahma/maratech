@@ -1,0 +1,190 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+}
+
+.modal {
+    background: white;
+    border-radius: 16px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    padding: 32px 32px 24px;
+    text-align: center;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #007bff;
+    margin: 0 0 12px 0;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #666;
+    margin: 0;
+}
+
+.content {
+    padding: 32px;
+}
+
+.instruction {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    margin: 0 0 24px 0;
+    text-align: center;
+}
+
+.modesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.modeCard {
+    background: #f8f9fa;
+    border: 3px solid #e9ecef;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.modeCard:hover {
+    border-color: #007bff;
+    background: #e7f3ff;
+    transform: translateY(-2px);
+}
+
+.modeCard:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+}
+
+.modeCard.selected {
+    border-color: #007bff;
+    background: #e7f3ff;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.iconWrapper {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #007bff;
+    position: relative;
+}
+
+.checkmark {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #28a745;
+    color: white;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modeTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+}
+
+.modeDescription {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.note {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
+.note p {
+    margin: 0;
+    font-size: 16px;
+    color: #856404;
+}
+
+.footer {
+    padding: 24px 32px;
+    border-top: 2px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.skipButton,
+.continueButton {
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.skipButton {
+    background: transparent;
+    color: #666;
+    border: 2px solid #e9ecef;
+}
+
+.skipButton:hover {
+    background: #f8f9fa;
+    border-color: #666;
+}
+
+.continueButton {
+    background: #007bff;
+    color: white;
+    flex: 1;
+}
+
+.continueButton:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+.continueButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+

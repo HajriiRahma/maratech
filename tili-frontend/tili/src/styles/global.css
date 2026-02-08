@@ -47,3 +47,71 @@ textarea {
     font-family: inherit;
     font-size: var(--font-size-base);
 }
+
+/* Accessibility Utilities */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus Visible Styles */
+*:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 100000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* High contrast focus indicators */
+[data-contrast="high"] *:focus-visible {
+    outline: 4px solid var(--warning);
+    outline-offset: 3px;
+}
+
+/* Smooth transitions with respect to reduced motion */
+* {
+    transition: background-color var(--transition-speed) ease,
+                color var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                transform var(--transition-speed) ease;
+}
+
+/* Ensure text is readable */
+body {
+    font-size: var(--font-size-base);
+}
+
+h1 { font-size: var(--font-size-xl); }
+h2 { font-size: var(--font-size-lg); }
+h3 { font-size: var(--font-size-base); }
+
+/* Ensure sufficient line height for readability */
+p, li, td, th {
+    line-height: 1.6;
+}
+
+/* Focus mode - hide non-essential elements */
+[data-focus-mode="true"] .non-essential {
+    display: none;
+}

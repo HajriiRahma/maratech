@@ -1,28 +1,35 @@
 import { useState } from 'react';
 import Layout from './components/layout/Layout';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard'; // Will implement next
-import Documents from './pages/Documents'; // Will implement
-import Meetings from './pages/Meetings'; // Will implement
-import Projects from './pages/Projects'; // Will implement
+import Dashboard from './pages/Dashboard';
+import Documents from './pages/Documents';
+import Meetings from './pages/Meetings';
+import Projects from './pages/Projects';
 import Settings from './pages/Settings';
+import WelcomeModal from './components/accessibility/WelcomeModal';
+import AccessibilityAssistant from './components/accessibility/AccessibilityAssistant';
 
 import { authService } from './utils/auth';
+import { AccessibilityProvider, useAccessibility } from './context/AccessibilityContext';
 
-function App() {
-  // Initialize user from authService
+function AppContent() {
+  const { preferences } = useAccessibility();
   const [user, setUser] = useState(() => {
     return authService.getCurrentUser();
   });
 
   const [currentPage, setCurrentPage] = useState('dashboard');
+  const [showWelcome, setShowWelcome] = useState(() => {
+    return preferences.showWelcome && user !== null;
+  });
 
   const handleLogin = (userData) => {
     setUser(userData);
-    // authService.login/register already handles storage, but if we just receive user object from Login component,
-    // we might assume Login component did the storage work or we trust state.
-    // However, for consistency, authService handles persistence.
     setCurrentPage('dashboard');
+    // Show welcome modal on first login
+    if (preferences.showWelcome) {
+      setShowWelcome(true);
+    }
   };
 
   const handleLogout = () => {
@@ -47,14 +54,28 @@ function App() {
   }
 
   return (
-    <Layout
-      activePage={currentPage}
-      onNavigate={setCurrentPage}
-      user={user}
-      onLogout={handleLogout}
-    >
-      {renderPage()}
-    </Layout>
+    <>
+      {showWelcome && <WelcomeModal onComplete={() => setShowWelcome(false)} />}
+
+      <Layout
+        activePage={currentPage}
+        onNavigate={setCurrentPage}
+        user={user}
+        onLogout={handleLogout}
+      >
+        {renderPage()}
+      </Layout>
+
+      <AccessibilityAssistant />
+    </>
+  );
+}
+
+function App() {
+  return (
+    <AccessibilityProvider>
+      <AppContent />
+    </AccessibilityProvider>
   );
 }
 
